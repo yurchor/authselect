@@ -52,8 +52,8 @@ AC_CONFIG_FILES([Makefile
                  src/lib/Makefile
                  src/lib/authselect.pc
                  src/man/Makefile
-                 src/man/build.sh
-                 src/tests/Makefile],
-                [chmod +x src/man/build.sh])
+                 src/tests/Makefile])
+
+AC_CONFIG_FILES([src/man/build.sh], [chmod +x src/man/build.sh])
 
 AC_OUTPUT

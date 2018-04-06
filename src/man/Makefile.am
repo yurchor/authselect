@@ -14,8 +14,18 @@ build_manpages:
 
 .PHONY: expand_files
 
+MAN_FILES = $(shell find $(srcdir) -maxdepth 1 -type f -name '*.adoc' -printf '%d\t%p\n' | sort -nk1 | cut -f2-) 
+MAN_PO = $(shell find $(srcdir)/po -maxdepth 1 -type f -name '*.po' -printf '%d\t%p\n' | sort -nk1 | cut -f2-)
+
+EXTRA_DIST = \
+    $(MAN_FILES) \
+    $(MAN_PO) \
+    $(NULL)
+
 clean-local:
 	for FILE in $(man_MANS) ; do \
 		$(RM) $$FILE $$FILE.txt ; \
-	done
+	done ; \
+	$(RM) build.stamp
+
 endif
